@@ -22,10 +22,6 @@ var initHttpServer = () => {
          }
        })
     });
-    // app.post('/mineBlock', (req, res) => {
-    //     mineBlock(req.body.data)
-    //     res.send();
-    // });
     
     //获取节点
     app.get('/peers', (req, res) => {

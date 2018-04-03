@@ -36,10 +36,10 @@ function mineBlock(data){
   if( (('0x'+nextHash) - ('0x'+target))<0 ){
     find = true;
     var newBlock = blockChain.generateNextBlock(data,nonce);
-    blockChain.addBlock(newBlock);
-    // p2p.broadcast(p2p.responseLatestMsg());
+    blockChain.addBlock(newBlock,function(blockData){
+      p2p.broadcast(blockData)
+    });
 
-    // console.log('循环次数: ' + nonce);
     nonce = 0;
     
     //延时两秒再去挖下一个块

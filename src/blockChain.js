@@ -11,7 +11,7 @@ var getGenesisBlock = () => {
 var blockchain = [getGenesisBlock()];
 
 //添加区块
-var addBlock = (newBlock) => {
+var addBlock = (newBlock,cb) => {
     if (isValidNewBlock(newBlock, getLatestBlock())) {
         blockchain.push(newBlock);
         
@@ -21,12 +21,11 @@ var addBlock = (newBlock) => {
           }else{
             var res = JSON.parse(res.toString())
             res.push(newBlock)
-            // console.log('res:',res)
             fs.writeFile(__dirname + '/blocks.json',JSON.stringify(res),function(err){
                 if(err){
                   console.log(err)
                 }else{
-                  
+                  cb(newBlock)
                   console.log(' 🔨 🔨 🔨  添加区块: ' + JSON.stringify(newBlock));
                 }
             })
