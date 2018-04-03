@@ -1,6 +1,5 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
-const multicastAddr = '192.168.1.255';
 
 server.on('close',()=>{
     console.log('socket已关闭');
@@ -12,7 +11,6 @@ server.on('error',(err)=>{
 
 server.on('listening',()=>{
     console.log('socket正在监听中...');
-  
   
     var message = '大家好啊，我是服务端>>>';
     var bip = '255.255.255.255';

@@ -37,7 +37,7 @@ function mineBlock(data){
     find = true;
     var newBlock = blockChain.generateNextBlock(data,nonce);
     blockChain.addBlock(newBlock);
-    p2p.broadcast(p2p.responseLatestMsg());
+    // p2p.broadcast(p2p.responseLatestMsg());
 
     // console.log('循环次数: ' + nonce);
     nonce = 0;
