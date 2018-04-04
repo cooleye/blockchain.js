@@ -13,7 +13,7 @@ var find =false;
 2、转成16进制
 3、var target = coefficient * 2^(8 * (exponent – 3))
 */
-function mineBlock(data){
+function proof_of_work(data){
   
   var previousBlock = blockChain.getLatestBlock();
   var nextIndex = previousBlock.index + 1;
@@ -56,7 +56,7 @@ function startMiner(){
   console.time('  ⏰  挖矿花费时间：')
   while (!find) {
     var str = 'Davie kong-' + nonce++;
-    mineBlock(str)
+    proof_of_work(str)
   }
   console.timeEnd('  ⏰  挖矿花费时间：')
 }
