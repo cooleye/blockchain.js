@@ -62,6 +62,7 @@ var generateNextBlock = (blockData,nonce) => {
     var nextHash = calculateHash(nextIndex, previousBlock.hash, nextTimestamp, blockData);
     return new Block(nextIndex, previousBlock.hash, nextTimestamp, blockData, nextHash,bits,nonce);
 };
+//替换区块链
 var replaceChain = (newBlocks) => {
     if (isValidChain(newBlocks) && newBlocks.length > blockchain.length) {
         console.log('Received blockchain is valid. Replacing current blockchain with received blockchain');
@@ -71,6 +72,7 @@ var replaceChain = (newBlocks) => {
         console.log('Received blockchain invalid');
     }
 };
+//检测区块链是否合法
 var isValidChain = (blockchainToValidate) => {
     if (JSON.stringify(blockchainToValidate[0]) !== JSON.stringify(getGenesisBlock())) {
         return false;
@@ -88,7 +90,7 @@ var isValidChain = (blockchainToValidate) => {
 
 //根据区块计算区块的哈希
 var calculateHashForBlock = (block) => {
-    return calculateHash(block.index, block.previousHash, block.timestamp, block.data);
+    return calculateHash(block.index, block.previousHash, block.timestamp, block.data,block.bit,block.non);
 };
 
 //计算区块的哈希
