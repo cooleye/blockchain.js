@@ -55,7 +55,8 @@ function proof_of_work(data){
 function startMiner(){
   console.time('  ⏰  挖矿花费时间：')
   while (!find) {
-    var str = 'Davie kong-' + nonce++;
+    var random = Math.random();
+    var str = 'Davie kong-' + random + nonce++;
     proof_of_work(str)
   }
   console.timeEnd('  ⏰  挖矿花费时间：')
