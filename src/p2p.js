@@ -33,6 +33,7 @@ var initP2PServer = () => {
       
       console.log(`接受其他节点广播来的数据 ${rinfo.address}:${rinfo.port}-${blockData}`);
       // server.send('exit',rinfo.port,rinfo.address)
+      
   });
   
   server.bind(8060);
