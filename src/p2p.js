@@ -34,15 +34,19 @@ var initP2PServer = () => {
       console.log(`接受其他节点广播来的数据 ${rinfo.address}:${rinfo.port}-${blockData}`);
       // server.send('exit',rinfo.port,rinfo.address)
   });
+  
+  server.bind(8060);
 
 };
 
 var broadcast = (blockData) => {
 
   var bip = '255.255.255.255';
+  // console.log('广播出去的区块>>>>>',JSON.stringify(blockData))
   server.send(JSON.stringify(blockData),8061,bip,function(err,bytes){
       console.log('>>把新加的区块数据广播到出去...')
   });
+  
 };
 
 module.exports = {

@@ -10,7 +10,7 @@ server.on('error',(err)=>{
 });
 
 server.on('listening',()=>{
-    console.log('socket正在监听中...');
+    console.log('server  socket正在监听中...');
   
     var message = '大家好啊，我是服务端>>>';
     var bip = '255.255.255.255';
@@ -28,4 +28,5 @@ server.on('message',(msg,rinfo)=>{
 server.bind('8060',function(){
   server.setBroadcast(true);//开启广播
   server.setTTL(128);
+  console.log('socket 服务开启。。。')
 });

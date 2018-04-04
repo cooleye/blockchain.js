@@ -60,6 +60,8 @@ function startMiner(){
   }
   console.timeEnd('  ⏰  挖矿花费时间：')
 }
-startMiner()
+// startMiner()
 
-module.exports = mineBlock;
+module.exports = {
+  startMiner
+};

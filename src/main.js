@@ -6,6 +6,7 @@ var fs = require('fs');
 
 var Block = require('./block');
 var p2p = require('./p2p');
+var miner = require('./miner')
 
 var http_port = process.env.HTTP_PORT || 3001;
 
@@ -36,7 +37,9 @@ var initHttpServer = () => {
 };
 
 
-initHttpServer();
+// initHttpServer();
 p2p.initP2PServer();
 
-
+setTimeout(function(){
+  miner.startMiner()
+},2000)
