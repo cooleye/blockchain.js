@@ -4,7 +4,7 @@
 bits :难度系数
 nonce：随机数
 */
-function Block(index, previousHash, timestamp, data, hash,bits,nonce) {
+function Block(index, previousHash, timestamp, data, hash,bits,nonce,mip) {
         this.index = index;
         this.previousHash = previousHash.toString();
         this.timestamp = timestamp;
@@ -12,6 +12,7 @@ function Block(index, previousHash, timestamp, data, hash,bits,nonce) {
         this.hash = hash.toString();
         this.bits = bits;
         this.nonce = nonce;
+        this.minerip = mip;
 }
 
 module.exports = Block;

@@ -2,7 +2,8 @@ var Block = require('./block')
 var fs = require('fs');
 var CryptoJS = require("crypto-js");
 
-var bits = require('./config.json').bits
+var bits = require('./config.json').bits;
+var localIp = require('./helper').localIp;
 //获取创世区块
 var getGenesisBlock = () => {
     return new Block(0, "0", 1465154705, "my genesis block!!", "816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7");
@@ -59,8 +60,9 @@ var generateNextBlock = (blockData,nonce) => {
     var previousBlock = getLatestBlock();
     var nextIndex = previousBlock.index + 1;
     var nextTimestamp = new Date().getTime() / 1000;
-    var nextHash = calculateHash(nextIndex, previousBlock.hash, nextTimestamp, blockData);
-    return new Block(nextIndex, previousBlock.hash, nextTimestamp, blockData, nextHash,bits,nonce);
+    
+    var nextHash = calculateHash(nextIndex, previousBlock.hash, nextTimestamp, blockData,bits,nonce);
+    return new Block(nextIndex, previousBlock.hash, nextTimestamp, blockData, nextHash,bits,nonce,localIp);
 };
 //替换区块链
 var replaceChain = (newBlocks) => {
@@ -90,11 +92,12 @@ var isValidChain = (blockchainToValidate) => {
 
 //根据区块计算区块的哈希
 var calculateHashForBlock = (block) => {
-    return calculateHash(block.index, block.previousHash, block.timestamp, block.data,block.bit,block.non);
+    return calculateHash(block.index, block.previousHash, block.timestamp, block.data,bits,block.nonce);
 };
 
 //计算区块的哈希
 var calculateHash = (index, previousHash, timestamp, data,bits,nonce) => {
+    // console.log('args>',index,previousHash,timestamp,data,bits,nonce)
     return CryptoJS.SHA256(index + previousHash + timestamp + data + bits + nonce).toString();
 };
 
