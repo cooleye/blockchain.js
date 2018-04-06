@@ -112,9 +112,8 @@ var calculateHash = (index, previousHash, timestamp, data,bits,nonce) => {
     return CryptoJS.SHA256(index + previousHash + timestamp + data + bits + nonce).toString();
 };
 ```
-区块中的数据只要不变，则SHA256就会算出同样的值，而一旦有一点的改变，就会计算出完全不一样的hash。我们的区块结构中，出了时间戳timestamp 和nonce之外其他字段都是固定不变的，所以每次我们只能去改变timestamp和nonce。timestamp每次获取当前时间。nonce从0开始自增。直到找出一个小于targe的值。
-我在一个 while循环中，使得nonce++；
-调用挖矿函数
+区块中的数据只要不变,则SHA256就会算出同样的值，而一旦有一点的改变，就会计算出完全不一样的hash。我们的区块结构中，出了时间戳timestamp 和nonce之外其他字段都是固定不变的，所以每次我们只能去改变timestamp和nonce。timestamp每次获取当前时间。nonce从0开始自增。直到找出一个小于targe的值。
+我在一个 while循环中，使得nonce++;调用挖矿函数
 ```
 function startMiner(){
   console.time('  ⏰  挖矿花费时间：')
