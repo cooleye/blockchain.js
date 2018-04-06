@@ -35,7 +35,7 @@ var initP2PServer = () => {
   server.on('message',(blockData,rinfo)=>{
       
       if(rinfo.address != localIp){
-            console.log(`接受其他节点广播来的数据 ${rinfo.address}:${rinfo.port}-${blockData}`);
+            console.log(`<<<<<<接受其他节点广播来的数据 ${rinfo.address}:${rinfo.port}-${blockData}`);
             blockChain.addBlock(JSON.parse(blockData),function(bd){
                 console.log('验证其他节点产生的区块合法，添加到本地区块链中')
             })

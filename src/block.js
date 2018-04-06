@@ -1,8 +1,13 @@
 /*
 区块
-参数：区块索引 index，上一个区块哈希 previousHash，时间戳，数据，本区块哈希
-bits :难度系数
-nonce：随机数
+参数：区块索引 index；
+上一个区块哈希 previousHash；
+时间戳 timestamp；
+数据 data；
+本区块哈希hash；
+难度系数bits；
+随机数 nonce；
+挖出区块的矿机ip
 */
 function Block(index, previousHash, timestamp, data, hash,bits,nonce,mip) {
         this.index = index;

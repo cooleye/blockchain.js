@@ -30,10 +30,11 @@ function proof_of_work(data){
   target = target.toString(16);
   nextHash = nextHash.toString(16);
   
-  // console.log(target)
-  // console.log(nextHash)
+
   // console.log('>>',(('0x'+nextHash) - ('0x'+target))<0)
   if( (('0x'+nextHash) - ('0x'+target))<0 ){
+    // console.log(target)
+    // console.log(nextHash)
     find = true;
     var newBlock = blockChain.generateNextBlock(data,nonce);
     blockChain.addBlock(newBlock,function(blockData){
