@@ -5,13 +5,17 @@
 //000000000000000000502ab70000000000000000000000000000000000000000
 //0000ffffff000000000000000000000000000000000000000000000000000000
 //0000500000000000000000000000000000000000000000000000000000000000
-var bits = "0x1d00d86a";
-var bits = "0x17502ab7"
-var bits = '0x1e500000'
-var coefficient =  '0x' + bits.substr(4,6);
-var exponent = bits.substr(0,4);
-var target = coefficient * Math.pow(2,8*(exponent-3));
+// var bits = "0x1d00d86a";
+// var bits = "0x17502ab7"
+// var bits = '0x1e500000'
 
-target = target.toString(16);
+// console.log(target)
 
-console.log(target)
+module.exports = function(bits){
+    var coefficient =  '0x' + bits.substr(4,6);
+    var exponent = bits.substr(0,4);
+    var target = coefficient * Math.pow(2,8*(exponent-3));
+    
+    target = target.toString(16);
+    return target;
+}
